@@ -21,8 +21,8 @@ var objects;
             if (y === void 0) { y = 0; }
             if (isCentered === void 0) { isCentered = false; }
             var _this = _super.call(this, config.Game.ASSETS.getResult("dice_" + diceNumber), x, y, isCentered) || this;
-            _this.scaleX = scale;
-            _this.scaleY = scale;
+            _this.scaleX = scale || 1;
+            _this.scaleY = scale || 1;
             _this.Start();
             return _this;
         }

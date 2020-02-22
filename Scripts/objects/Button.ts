@@ -2,11 +2,14 @@ module objects {
     export class Button extends GameObject {
 
         // constructor
-        constructor(imagePath: Object = config.Game.ASSETS.getResult("button"), x: number = 0, y: number = 0, isCentered: boolean = false) {
+        constructor(imagePath: Object = config.Game.ASSETS.getResult("button"), x: number = 0, y: number = 0, isCentered: boolean = false, scale?: number) {
             super(imagePath, x, y, isCentered);
 
             this.on("mouseover", this.MouseOver);
             this.on("mouseout", this.MouseOut);
+
+            this.scaleX = scale || 1;
+            this.scaleY = scale || 1;
 
             this.Start();
         }

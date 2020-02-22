@@ -6,6 +6,7 @@ module scenes
         START,
         PLAY,
         END,
+        RPG,
         NUM_OF_SCENES
     }
 }

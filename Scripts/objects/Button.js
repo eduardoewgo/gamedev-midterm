@@ -17,7 +17,7 @@ var objects;
     var Button = /** @class */ (function (_super) {
         __extends(Button, _super);
         // constructor
-        function Button(imagePath, x, y, isCentered) {
+        function Button(imagePath, x, y, isCentered, scale) {
             if (imagePath === void 0) { imagePath = config.Game.ASSETS.getResult("button"); }
             if (x === void 0) { x = 0; }
             if (y === void 0) { y = 0; }
@@ -25,6 +25,8 @@ var objects;
             var _this = _super.call(this, imagePath, x, y, isCentered) || this;
             _this.on("mouseover", _this.MouseOver);
             _this.on("mouseout", _this.MouseOut);
+            _this.scaleX = scale || 1;
+            _this.scaleY = scale || 1;
             _this.Start();
             return _this;
         }

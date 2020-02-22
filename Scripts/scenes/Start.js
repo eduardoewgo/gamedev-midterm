@@ -16,20 +16,17 @@ var scenes;
 (function (scenes) {
     var Start = /** @class */ (function (_super) {
         __extends(Start, _super);
-        // PUBLIC PROPERTIES
-        // CONSTRUCTOR
         function Start() {
             var _this = _super.call(this) || this;
             _this.Start();
             return _this;
         }
-        // PRIVATE METHODS
-        // PUBLIC METHODS
         Start.prototype.Start = function () {
             //instantiate a new Text object
-            this._welcomeLabel = new objects.Label("COMP397 - Midterm Test", "40px", "Consolas", "#000000", 320, 180, true);
+            this._welcomeLabel = new objects.Label("COMP397 - Midterm Test\n Eduardo Godoy 22/02/20", "40px", "Consolas", "#000000", 320, 180, true);
             // buttons
-            this._startButton = new objects.Button(config.Game.ASSETS.getResult("startButton"), 320, 430, true);
+            this._startButton = new objects.Button(config.Game.ASSETS.getResult("startButton"), 180, 430, true);
+            this._bonusButton = new objects.Button(config.Game.ASSETS.getResult("bonusButton"), 460, 430, true, 0.5);
             this.Main();
         };
         Start.prototype.Update = function () {
@@ -37,8 +34,12 @@ var scenes;
         Start.prototype.Main = function () {
             this.addChild(this._welcomeLabel);
             this.addChild(this._startButton);
+            this.addChild(this._bonusButton);
             this._startButton.on("click", function () {
                 config.Game.SCENE = scenes.State.PLAY;
+            });
+            this._bonusButton.on("click", function () {
+                config.Game.SCENE = scenes.State.RPG;
             });
         };
         return Start;

@@ -36,10 +36,15 @@ var scenes;
             this.addChild(this._lblDiceOne);
             this.addChild(this._lblDiceTwo);
             this.addChild(this._btnRoll);
+            // Listener for Roll Button
             this._btnRoll.on("click", function () {
+                // Little bonus here :)
+                createjs.Sound.play("dice_rolling");
+                // Generate two random numbers between 1 and 6.
                 _this._diceOneResult = Math.floor(Math.random() * 6) + 1;
                 _this._diceTwoResult = Math.floor(Math.random() * 6) + 1;
                 console.log("Results " + _this._diceOneResult + " and " + _this._diceTwoResult);
+                // Using setInterval for a simple rolling effect.
                 var intervalId = setInterval(function () {
                     var rng1 = Math.floor(Math.random() * 6) + 1, rng2 = Math.floor(Math.random() * 6) + 1;
                     _this._diceOne.image = config.Game.ASSETS.getResult("dice_" + rng1);
@@ -47,6 +52,7 @@ var scenes;
                     _this._lblDiceOne.text = "rolling!";
                     _this._lblDiceTwo.text = "rolling!";
                 }, 150);
+                // Clear the interval and display actual results.
                 setTimeout(function () {
                     clearInterval(intervalId);
                     _this._diceOne.image = config.Game.ASSETS.getResult("dice_" + _this._diceOneResult);

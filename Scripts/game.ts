@@ -15,6 +15,7 @@ let Game = (function () {
         [
             {id: "startButton", src: "./Assets/images/startButton.png"},
             {id: "rollButton", src: "./Assets/images/rollButton.png"},
+            {id: "bonusButton", src: "./Assets/images/button_bonus.png"},
             {id: "dice_blank", src: "./Assets/images/blank.png"},
             {id: "dice_1", src: "./Assets/images/1.png"},
             {id: "dice_2", src: "./Assets/images/2.png"},
@@ -22,6 +23,7 @@ let Game = (function () {
             {id: "dice_4", src: "./Assets/images/4.png"},
             {id: "dice_5", src: "./Assets/images/5.png"},
             {id: "dice_6", src: "./Assets/images/6.png"},
+            {id: "dice_rolling", src: "./Assets/audio/dice_rolling.wav"},
         ];
 
     function Preload(): void {
@@ -84,6 +86,10 @@ let Game = (function () {
                 break;
             case scenes.State.PLAY:
                 console.log("switch to Play Scene");
+                currentScene = new scenes.Play();
+                break;
+            case scenes.State.RPG:
+                console.log("switch to DND Scene");
                 currentScene = new scenes.Play();
                 break;
             case scenes.State.END:
