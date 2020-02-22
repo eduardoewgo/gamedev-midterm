@@ -9,13 +9,15 @@ var Game = (function () {
     var currentScene;
     var assets;
     var assetManifest = [
-        { id: "button", src: "./Assets/images/button.png" },
-        { id: "placeholder", src: "./Assets/images/placeholder.png" },
         { id: "startButton", src: "./Assets/images/startButton.png" },
-        { id: "nextButton", src: "./Assets/images/nextButton.png" },
-        { id: "backButton", src: "./Assets/images/backButton.png" },
-        { id: "ocean", src: "./Assets/images/ocean.gif" },
-        { id: "plane", src: "./Assets/images/plane.png" }
+        { id: "rollButton", src: "./Assets/images/rollButton.png" },
+        { id: "dice_blank", src: "./Assets/images/blank.png" },
+        { id: "dice_1", src: "./Assets/images/1.png" },
+        { id: "dice_2", src: "./Assets/images/2.png" },
+        { id: "dice_3", src: "./Assets/images/3.png" },
+        { id: "dice_4", src: "./Assets/images/4.png" },
+        { id: "dice_5", src: "./Assets/images/5.png" },
+        { id: "dice_6", src: "./Assets/images/6.png" },
     ];
     function Preload() {
         assets = new createjs.LoadQueue(); // asset container

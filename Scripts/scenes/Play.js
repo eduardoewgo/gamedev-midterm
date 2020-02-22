@@ -16,23 +16,35 @@ var scenes;
 (function (scenes) {
     var Play = /** @class */ (function (_super) {
         __extends(Play, _super);
-        // PRIVATE INSTANCE MEMBERS
-        // PUBLIC PROPERTIES
-        // CONSTRUCTOR
         function Play() {
             var _this = _super.call(this) || this;
             _this.Start();
             return _this;
         }
-        // PRIVATE METHODS
-        // PUBLIC METHODS
-        //initialize and instatiate
         Play.prototype.Start = function () {
+            this._diceOne = new objects.Dice('blank', 180, 240, true, 0.5);
+            this._diceTwo = new objects.Dice('blank', 460, 240, true, 0.5);
+            this._lblDiceOne = new objects.Label('blank', '24px', 'Consolas', '#000000', 180, 315, true);
+            this._lblDiceTwo = new objects.Label('blank', '24px', 'Consolas', '#000000', 460, 315, true);
+            this._btnRoll = new objects.Button(config.Game.ASSETS.getResult("rollButton"), 320, 430, true);
             this.Main();
         };
-        Play.prototype.Update = function () {
-        };
         Play.prototype.Main = function () {
+            var _this = this;
+            this.addChild(this._diceOne);
+            this.addChild(this._diceTwo);
+            this.addChild(this._lblDiceOne);
+            this.addChild(this._lblDiceTwo);
+            this.addChild(this._btnRoll);
+            this._btnRoll.on("click", function () {
+                _this._diceOneResult = Math.floor(Math.random() * 6) + 1;
+                _this._diceTwoResult = Math.floor(Math.random() * 6) + 1;
+                console.log("Results " + _this._diceOneResult + " and " + _this._diceTwoResult);
+            });
+        };
+        Play.prototype.Update = function () {
+            if (this._diceOneResult && this._diceTwoResult) {
+            }
         };
         return Play;
     }(objects.Scene));
