@@ -89,8 +89,8 @@ let Game = (function () {
                 currentScene = new scenes.Play();
                 break;
             case scenes.State.RPG:
-                console.log("switch to DND Scene");
-                currentScene = new scenes.Play();
+                console.log("switch to RPG Scene");
+                currentScene = new scenes.RPG();
                 break;
             case scenes.State.END:
                 console.log("switch to End Scene");
