@@ -38,7 +38,10 @@ module scenes {
 
         public Update(): void {
             if (this._diceOneResult && this._diceTwoResult) {
-
+                this._diceOne.image = config.Game.ASSETS.getResult(`dice_${this._diceOneResult}`) as any;
+                this._diceTwo.image = config.Game.ASSETS.getResult(`dice_${this._diceTwoResult}`) as any;
+                this._lblDiceOne.text = `${this._diceOneResult}`;
+                this._lblDiceTwo.text = `${this._diceTwoResult}`;
             }
         }
     }

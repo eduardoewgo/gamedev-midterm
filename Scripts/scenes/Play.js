@@ -44,6 +44,10 @@ var scenes;
         };
         Play.prototype.Update = function () {
             if (this._diceOneResult && this._diceTwoResult) {
+                this._diceOne.image = config.Game.ASSETS.getResult("dice_" + this._diceOneResult);
+                this._diceTwo.image = config.Game.ASSETS.getResult("dice_" + this._diceTwoResult);
+                this._lblDiceOne.text = "" + this._diceOneResult;
+                this._lblDiceTwo.text = "" + this._diceTwoResult;
             }
         };
         return Play;
