@@ -32,17 +32,29 @@ module scenes {
             this._btnRoll.on("click", () => {
                 this._diceOneResult = Math.floor(Math.random() * 6) + 1;
                 this._diceTwoResult = Math.floor(Math.random() * 6) + 1;
+
                 console.log(`Results ${this._diceOneResult} and ${this._diceTwoResult}`);
+
+                const intervalId = setInterval(() => {
+                    let rng1 = Math.floor(Math.random() * 6) + 1, rng2 = Math.floor(Math.random() * 6) + 1;
+                    this._diceOne.image = config.Game.ASSETS.getResult(`dice_${rng1}`) as any;
+                    this._diceTwo.image = config.Game.ASSETS.getResult(`dice_${rng2}`) as any;
+                    this._lblDiceOne.text = `rolling!`;
+                    this._lblDiceTwo.text = `rolling!`;
+                }, 150);
+
+                setTimeout(() => {
+                    clearInterval(intervalId);
+                    this._diceOne.image = config.Game.ASSETS.getResult(`dice_${this._diceOneResult}`) as any;
+                    this._diceTwo.image = config.Game.ASSETS.getResult(`dice_${this._diceTwoResult}`) as any;
+                    this._lblDiceOne.text = `${this._diceOneResult}`;
+                    this._lblDiceTwo.text = `${this._diceTwoResult}`;
+                }, 1000);
             });
         }
 
         public Update(): void {
-            if (this._diceOneResult && this._diceTwoResult) {
-                this._diceOne.image = config.Game.ASSETS.getResult(`dice_${this._diceOneResult}`) as any;
-                this._diceTwo.image = config.Game.ASSETS.getResult(`dice_${this._diceTwoResult}`) as any;
-                this._lblDiceOne.text = `${this._diceOneResult}`;
-                this._lblDiceTwo.text = `${this._diceTwoResult}`;
-            }
+
         }
     }
 }

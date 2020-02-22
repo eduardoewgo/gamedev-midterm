@@ -40,15 +40,23 @@ var scenes;
                 _this._diceOneResult = Math.floor(Math.random() * 6) + 1;
                 _this._diceTwoResult = Math.floor(Math.random() * 6) + 1;
                 console.log("Results " + _this._diceOneResult + " and " + _this._diceTwoResult);
+                var intervalId = setInterval(function () {
+                    var rng1 = Math.floor(Math.random() * 6) + 1, rng2 = Math.floor(Math.random() * 6) + 1;
+                    _this._diceOne.image = config.Game.ASSETS.getResult("dice_" + rng1);
+                    _this._diceTwo.image = config.Game.ASSETS.getResult("dice_" + rng2);
+                    _this._lblDiceOne.text = "rolling!";
+                    _this._lblDiceTwo.text = "rolling!";
+                }, 150);
+                setTimeout(function () {
+                    clearInterval(intervalId);
+                    _this._diceOne.image = config.Game.ASSETS.getResult("dice_" + _this._diceOneResult);
+                    _this._diceTwo.image = config.Game.ASSETS.getResult("dice_" + _this._diceTwoResult);
+                    _this._lblDiceOne.text = "" + _this._diceOneResult;
+                    _this._lblDiceTwo.text = "" + _this._diceTwoResult;
+                }, 1000);
             });
         };
         Play.prototype.Update = function () {
-            if (this._diceOneResult && this._diceTwoResult) {
-                this._diceOne.image = config.Game.ASSETS.getResult("dice_" + this._diceOneResult);
-                this._diceTwo.image = config.Game.ASSETS.getResult("dice_" + this._diceTwoResult);
-                this._lblDiceOne.text = "" + this._diceOneResult;
-                this._lblDiceTwo.text = "" + this._diceTwoResult;
-            }
         };
         return Play;
     }(objects.Scene));
